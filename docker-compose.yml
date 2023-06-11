@@ -1,1 +1,23 @@
+version: '3.9'
 
+services:
+  db:
+    image: robertfraefel/power_manager_backend:latest
+    restart: always
+    container_name: power_manager_backend
+    
+  app:
+    build:
+      context: .
+      args:
+        - DATABASE_HOST=192.168.1.44
+        - DATABASE_PORT=3306
+        - DATABASE_NAME=powermanager
+  
+    volumes:
+      - db_data:/var/lib/pm_data
+    ports:
+      - 8080:8080
+
+volumes:
+  pm_backend_data:
