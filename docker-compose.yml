@@ -15,7 +15,7 @@ services:
         - DATABASE_NAME=powermanager
   
     volumes:
-      - db_data:/var/lib/pm_data
+      - pm_backend_data:/var/lib/pm_data
     ports:
       - 8080:8080
 
