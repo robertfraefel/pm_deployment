@@ -14,10 +14,10 @@ services:
         - DATABASE_PORT=3306
         - DATABASE_NAME=powermanager
   
-    volumes:
-      - pm_backend_data:/var/lib/pm_data
+#    volumes:
+#      - pm_backend_data:/var/lib/pm_data
     ports:
       - 8080:8080
 
-volumes:
-  pm_backend_data:
+#volumes:
+#  pm_backend_data:
