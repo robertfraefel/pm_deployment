@@ -8,7 +8,7 @@ services:
     
   app:
     build:
-      context: .
+#      context: .
 #      args:
 #        - DATABASE_HOST=192.168.1.44
 #        - DATABASE_PORT=3306
