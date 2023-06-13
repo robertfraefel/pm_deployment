@@ -1,14 +1,6 @@
 version: '3'
 services:
-  db:
-    image: robertfraefel/pm_backend:latest
-    restart: always
-    container_name: pm_backend
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - .:/app
+    image: robertfraefel/pm_backend:latest
     ports:
       - 8081:8080
