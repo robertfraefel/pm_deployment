@@ -1,1 +1,11 @@
-
+version: '3'
+services:
+  app:
+    image: robertfraefel/pm_frontend:latest
+    container_name: pm_frontend
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:mysql://192.168.1.44:3306/power_manager?createDatabaseIfNotExist=true
+#      - SPRING_DATASOURCE_USERNAME=root
+#      - SPRING_DATASOURCE_PASSWORD=power4ever
+    ports:
+      - 8080:8080
