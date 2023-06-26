@@ -8,4 +8,4 @@ services:
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=power4ever
     ports:
-      - 8081:8081
+      - 8081:8080
