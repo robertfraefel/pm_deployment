@@ -1,6 +1,6 @@
 version: '3'
 services:
-  app:
+  backend:
     image: robertfraefel/pm_backend:latest
     container_name: pm_backend
     environment:
@@ -9,9 +9,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=power4ever
     ports:
       - 8081:8080
-      
-services:
-  app:
+  frontend:
     image: robertfraefel/pm_frontend:latest
     container_name: pm_frontend
     ports:
