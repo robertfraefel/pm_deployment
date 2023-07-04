@@ -1,0 +1,35 @@
+version: "3.5"
+services:
+  webhookd:
+    hostname: webhookd
+    image: ncarlier/webhookd:latest
+    user: root
+    container_name: webhookd
+    expose:
+     - "80"
+    #For direct test access, remove "#" in the following 2 lines. Call: http://localhost:83 or http://ServerIP:83
+    ports:   
+      - "83:80" 
+    restart: always
+    environment:
+      WHD_LISTEN_ADDR: ":80"
+      WHD_SCRIPTS: /scripts
+      WHD_HOOK_TIMEOUT: '600'
+
+  #Labels for ReverseProxy, see: https://www.libe.net/en-traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.webhookd.rule=Host(`hook.domain.tld`)"   
+      - "traefik.http.routers.webhookd.entrypoints=web" 
+      - "traefik.http.routers.webhookd.entrypoints=websecure"
+      - "traefik.http.routers.webhookd.tls.certresolver=myresolver"  
+    volumes:
+     - ./scripts:/scripts
+     - /var/run/docker.sock:/var/run/docker.sock
+
+#Without using a reverse proxy (https://www.libe.net/en-traefik) the webproxy network is likely to be missing
+#and the following lines can be removed or commented out. Alternatively, the network can be created with "docker network create webproxy".
+#networks:
+#  default:
+#    external:
+#      name: webproxy3
